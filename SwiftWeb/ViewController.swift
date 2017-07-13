@@ -60,12 +60,16 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBAction func btnLoadHtmlFile(_ sender: UIButton) {
     }
     @IBAction func btnStop(_ sender: UIBarButtonItem) {
+        myWebView.stopLoading()
     }
     @IBAction func btnReload(_ sender: UIBarButtonItem) {
+        myWebView.reload()
     }
     @IBAction func btnGoBack(_ sender: UIBarButtonItem) {
+        myWebView.goBack()
     }
     @IBAction func btnGoForward(_ sender: UIBarButtonItem) {
+        myWebView.goForward()
     }
 }
 
