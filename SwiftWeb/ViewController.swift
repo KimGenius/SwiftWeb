@@ -15,7 +15,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIWebViewDelegate {
 
 
     @IBOutlet weak var txtUrl: UITextField!
@@ -23,20 +23,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     func loadWebPage(_ url:String) {
-
+        let myUrl = URL(string: url)
+        let myRequest = URLRequest(url: myUrl!)
+        myWebView.loadRequest(myRequest)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        myWebView.delegate = self //이거를 하면 페이지 로딩시간이 줄어든데
+        loadWebPage("http://genius-kim-1047.tistory.com")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    //이거를 하면 페이지 로딩시간이 줄어든데
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        myActivityIndicator.startAnimating()
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        myActivityIndicator.stopAnimating()
+    }
+    //ㅇㅇ
+    
     @IBAction func btnGotoUrl(_ sender: UIButton) {
     }
     @IBAction func btnGoSite1(_ sender: UIButton) {
